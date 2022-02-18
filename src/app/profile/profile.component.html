@@ -1,7 +1,9 @@
 <div class="content">
-  <div class="container">
-    <div class="row" *ngFor="let post of posts | async">
-      <div class="blogpost">
+
+  <div class="col-md-4"></div>
+  <div class="container col-md-6">
+    <div class="row" *ngFor="let post of myposts | async">
+      <div class="mypost">
         <h3><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
         <div>
           <i class="fas fa-user"></i> Author: {{post.username}}

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-1"></div>
-      <div class="col-md-8">
+      <div class="col-md-10">
         <h1 class="blog-title">{{post.title}}</h1>
         <span>
                   <p>by {{post.username}}</p>
@@ -11,6 +11,36 @@
         <p [innerHTML]="post.content"></p>
         <hr>
       </div>
+      <div class="col-md-1"></div>
+
+      <form [formGroup]="addCommentForm" (ngSubmit)="addComment()">
+      <div class="form-group row">
+        <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <label >Your comments:</label>
+        <textarea type="text" [formControlName]="'commentTextArea'" class="form-control" rows="2"></textarea>
+      </div>
+        <div class="form-group col-md-2">
+      <button type="submit" class="btn btn-outline-primary">Send</button>
+      </div>
+      </div>
+      </form>
+
+      <div class="row" *ngFor="let comment of comments| async">
+        <div class="col-md-3"></div>
+        <div class="col-md-8" >
+          <hr>
+          <div class="commentpost">
+            <div>
+              <i class="fas fa-user"></i> Comment from: {{comment.author_username}} | {{comment.createdOn}}
+            </div>
+            <p [innerHTML]="comment.content"></p>
+
+          </div>
+        </div>
+    </div>
+
+
     </div>
 
   </div>

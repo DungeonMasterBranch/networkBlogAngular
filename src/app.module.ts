@@ -19,6 +19,7 @@ import {EditorModule} from "@tinymce/tinymce-angular";
 import {HttpClientInterceptor} from "./app/http-client-interceptor";
 import { PostComponent } from './app/post/post.component';
 import {AuthGuard} from "./app/auth.guard";
+import { ProfileComponent } from './app/profile/profile.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {AuthGuard} from "./app/auth.guard";
     RegisterSuccessComponent,
     HomeComponent,
     AddPostComponent,
-    PostComponent
+    PostComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -39,13 +41,14 @@ import {AuthGuard} from "./app/auth.guard";
     ReactiveFormsModule,
     NgxWebstorageModule.forRoot(),
     RouterModule.forRoot([
-      {path:'',component:HomeComponent},
+      {path: '',component:HomeComponent},
       {path: 'post/:id', component: PostComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'register-success', component: RegisterSuccessComponent},
       {path: 'login', component: LoginComponent},
       {path: 'home', component:HomeComponent},
-      {path: 'add-post', component:AddPostComponent, canActivate: [AuthGuard]}
+      {path: 'add-post', component:AddPostComponent, canActivate: [AuthGuard]},
+      {path:'profile/:id', component:ProfileComponent},
     ]),
     HttpClientModule,
     EditorModule
